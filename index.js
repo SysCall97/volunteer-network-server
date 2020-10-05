@@ -61,7 +61,7 @@ client.connect(err => {
             })
     });
 
-    app.get('/getAllUser', (req, res) => {
+    app.get('/getAllUsers', (req, res) => {
         userTblCollection.find({})
             .toArray((err, documents) => {
                 res.send(documents);
