@@ -61,6 +61,13 @@ client.connect(err => {
             })
     });
 
+    app.get('/getAllUser', (req, res) => {
+        userTblCollection.find({})
+            .toArray((err, documents) => {
+                res.send(documents);
+            })
+    });
+
     app.post('/register', (req, res) => {
         const register = req.body;
         
@@ -74,6 +81,7 @@ client.connect(err => {
         userTblCollection.deleteOne({ _id: ObjectId(id) })
         .then(result => res.send(result.deletedCount > 0));
     });
+
 });
 
 
