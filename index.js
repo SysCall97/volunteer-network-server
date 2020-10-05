@@ -29,9 +29,9 @@ client.connect(err => {
     const volunteeringTblCollection = client.db(dbname).collection(volunteeringTbl);
     const userTblCollection = client.db(dbname).collection(userTbl);
 
-    app.post('/uploadAllData', (req, res) => {
-        const volunteeringFields = req.body;
-        volunteeringTblCollection.insertMany(volunteeringFields)
+    app.post('/addNewEvent', (req, res) => {
+        const volunteeringField = req.body;
+        volunteeringTblCollection.insertOne(volunteeringField)
             .then(result => {
                 res.send(result.insertedCount > 0);
             })
